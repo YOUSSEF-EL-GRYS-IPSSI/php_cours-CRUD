@@ -21,7 +21,7 @@
 
     if (!$result) {
 
-        echo "la récupération des données a rencontré un problème. ";
+        echo "la récupération des données a rencontré un problème. dans la base de donnée ";
     } else {
         $nb_clients = $result->rowCount();
     }
