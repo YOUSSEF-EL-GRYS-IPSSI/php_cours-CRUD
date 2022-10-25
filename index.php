@@ -12,5 +12,7 @@
     <a href="affichage.php">Affiché nos clients</a>
     <br>
     <a href="form_modif_client.php">Modification de nos clients</a>
+    <br>
+    <a href="form_delete_client.php">Supprimer mes informations</a>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <?php
 
     if (empty($_POST['id_client'])) {
-        header("Location:form_modif_client.php");
+        header("Location:form_delete_client.php");
         $error = "Veuillez saisir l'Id que vous voulez modifier.";
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@
     //////////////////////////////////////////////////////////////////////
 
 
-    if (!isset($_POST['modif'])) 
+    if (!isset($_POST['delete'])) 
     {
         $id_client = $_POST['id_client'];
 
@@ -41,41 +41,41 @@
 
            ?>
 
-        <form action="modif_client.php" method="post">
+        <form action="delete_client.php" method="post">
 
             <fieldset>
-                <legend><b>Modifier vos coordonnée</b></legend>
+                <legend><b>Supprimer vos coordonnée</b></legend>
 
 
                 <table>
                     <tr>
                         <td>Nom:</td>
-                        <td><input type="text" name="nom" id="" size="60" value="<?= $data["nom"]; ?>"> </td>
+                        <td><?= $data["nom"]; ?> </td>
                     </tr>
 
                     <tr>
                         <td>Prénom:</td>
-                        <td><input type="text" name="prenom" id="" size="60" value="<?= $data["prenom"]; ?>"> </td>
+                        <td><?= $data["prenom"];?> </td>
                     </tr>
 
                     <tr>
                         <td>Age:</td>
-                        <td><input type="text" name="age" id="" size="60" value="<?= $data["age"]; ?>"> </td>
+                        <td><?= $data["age"]; ?> </td>
                     </tr>
 
                     <tr>
                         <td>Adresse:</td>
-                        <td><input type="text" name="adresse" id="" size="60" value="<?= $data["adresse"]; ?>"> </td>
+                        <td><?= $data["adresse"]; ?> </td>
                     </tr>
 
                     <tr>
                         <td>Ville:</td>
-                        <td><input type="text" name="ville" id="" size="60" value="<?= $data["ville"]; ?>"> </td>
+                        <td><?= $data["ville"]; ?> </td>
                     </tr>
 
                     <tr>
                         <td>Email:</td>
-                        <td><input type="text" name="mail" id="" size="60" value="<?= $data["mail"]; ?>"> </td>
+                        <td><?= $data["mail"]; ?> </td>
                     </tr>
 
                     <tr>
@@ -83,7 +83,7 @@
                             <input type="reset" name="" id="" value="Effacer">
                         </td>
                         <td>
-                            <input type="submit" name="modif" id="" value="Enregister">
+                            <input type="submit" name="delete" id="" value="deleted">
                         </td>
                     </tr>
                 </table>
@@ -102,49 +102,28 @@
     
     
     
-    else
+    else{
     
-    if(isset($_POST['nom'])&& isset($_POST['prenom']) && isset($_POST['age']) && isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['mail'])) 
-    {
+       $id_client = $_POST['id_client'];
 
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $age = $_POST['age'];
-        $adresse = $_POST['adresse'];
-        $ville = $_POST['ville'];
-        $mail = $_POST['mail'];
+       $requete = "DELETE FROM clients WHERE id_client = $id_client";
 
-        $id_client = $_POST['id_client'];
-
-        $requete = $bddPDO->prepare('UPDATE clients SET nom =:nom, prenom =:prenom, age =:age, adresse =:adresse, ville =:ville, mail =:mail
-        WHERE id_client =:id_client');
+       $result = $bddPDO->exec($requete);
 
 
-        $requete->bindValue(':nom', $nom);
-        $requete->bindValue(':prenom', $prenom);
-        $requete->bindValue(':age', $age);
-        $requete->bindValue(':adresse', $adresse);
-        $requete->bindValue(':ville', $ville);
-        $requete->bindValue(':mail', $mail);
-        $requete->bindValue(':id_client', $id_client);
-
-
-
-        $result = $requete->execute();
 
 
       
         if (!$result) {
-            echo "Un probleme est survenue, les modification n'ont pas été faites!";
+            echo "Un probleme est survenue, le client n'a pas été supprimé!";
         } 
         else {
-            echo "Vos modifications ont été bien effectuées. :)";
+            echo "le client a bien été supprimé. :)";
         }
-    } 
-        
-    else {
-        echo "Modifier vos coordonnés!";
-    }
+    
+   } 
+
+   
     ?>
 
 

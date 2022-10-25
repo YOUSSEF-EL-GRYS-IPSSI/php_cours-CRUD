@@ -47,10 +47,7 @@
 
                 echo "Error !";
             } else {
-                echo "
-            <script type=\"text/javascript\">
-            alert('Vous ete bien enregistré. Votre identifiant est " . $bddPDO->lastInsertId() . "')
-            </<script>";
+                echo " Votre identifiant est " . $bddPDO->lastInsertId() . "')";
 
             
             }
