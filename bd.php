@@ -55,7 +55,7 @@
             
             }
         } else {
-            echo "Tous les champs sont requis";
+            echo "Tous les champs sont requis.";
         }
     }
 

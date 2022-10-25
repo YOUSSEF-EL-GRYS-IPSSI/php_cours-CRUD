@@ -20,7 +20,7 @@
                 <tr>
                     <td>Code client : </td>
                     <td>
-                        <input type="text" name="id_client" id="" size="50" maxlength="50>">
+                        <input type="text" name="id_client" id="" size="50" maxlength="55>">
                     </td>
                 </tr>
 
