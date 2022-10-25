@@ -39,18 +39,31 @@
             <th>Adresse</th>
             <th>Ville</th>
             <th>Adresse Email</th>
+            <th>Modification</th>
+            <th>Suppression</th>
         </tr>
 
 
         <?php
         while ($ligne = $result->fetch(PDO::FETCH_NUM)) {
 
+            // echo "<pre>";
+            // print_r($ligne);
+
+            // echo "</pre>";
             echo "<tr>";
             foreach ($ligne as $valeur) {
 
                 echo "<td>$valeur</td>";
             }
-
+        ?>
+            <td>
+                <a href="modifier_client.php?id_client=<?= $ligne[0]; ?>">Modifer</a>
+            </td>
+            <td>
+                <a href="supp_client.php?id_client=<?= $ligne[0]; ?>">Supprimé</a>
+            </td>
+        <?php
             echo "<tr>";
         }
         ?>

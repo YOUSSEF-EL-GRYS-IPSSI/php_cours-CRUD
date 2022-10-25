@@ -14,5 +14,7 @@
     <a href="form_modif_client.php">Modification de nos clients</a>
     <br>
     <a href="form_delete_client.php">Supprimer mes informations</a>
+    <br>
+    <a href="gestion_clients.php">Gestion clients</a>
 </body>
 </html>
